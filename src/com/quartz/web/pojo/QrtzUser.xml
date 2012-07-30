@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+ <sqlMap namespace="quartz-web">
+ 	<resultMap id="qrtzUserResult" class="com.quartz.web.pojo.QrtzUser">
+         <result property="id" column="ID" columnIndex="1" />
+         <result property="qrtzUserName" column="USER_NAME" columnIndex="2" />
+         <result property="qrtzUserPassword" column="USER_PASSWORD" columnIndex="3" />
+         <result property="qrtzJobName" column="USER_JOB_NAME" columnIndex="4" />
+         <result property="qrtzTriggerName" column="USER_TRIGGER_NAME" columnIndex="5" />
+         <result property="qrtzUserGroup" column="USER_GROUP" columnIndex="6" />
+     </resultMap>
+     
+    <select id="insert">
+    	
+    </select>
+    <select id="selectQrtzUserByName" resultMap="qrtzUserResult" remapResults="true">
+    	select qu.* from qrtz_users qu where qu.user_name= #userName#
+    </select>
+</sqlMap>
