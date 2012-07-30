@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/quartz_web?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="4" />
+	</bean>
+
+	<bean id="dataSource_oracle" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@192.168.100.235:1521:mpptest" />
+		<property name="username" value="gmcc" />
+		<property name="password" value="skywin" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="4" />
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:/com/quartz/web/config/ibatis/SqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="lobHandler" ref="lobHandler"/>
+	</bean>
+	<bean id="lobHandler"  class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
+	
+
+	<bean id="baseTxService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="proxyTargetClass" value="true" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="query*">readOnly</prop>
+				<prop key="get*">readOnly</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="QrtzUserImp" class="com.quartz.web.dao.impl.QrtzUserImp">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+
+</beans>
