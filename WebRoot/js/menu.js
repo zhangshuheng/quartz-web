@@ -1,4 +1,5 @@
 Ext.onReady(function() {
+	
 	var Toolbar = new Ext.toolbar.Toolbar({// 创建工具栏
 		renderTo : 'toolbar',
 		width : 300,
@@ -69,6 +70,7 @@ Ext.onReady(function() {
 		Ext.Msg.alert("提示","您点击了:\t<font style='font: bold;' >"+item.text+"</font>");// 取得菜单项的text属性
 	}
 	function addTabPage(){  
+		var tabPanel = Ext.getCmp('mainTabPanel');
         var index = tabPanel.items.length + 1;  
         var tabPage = tabPanel.add({//动态添加tab页  
             title: 'tab标签页'+index,  
@@ -77,4 +79,6 @@ Ext.onReady(function() {
         })  
         tabPanel.setActiveTab(tabPage);//设置当前tab页  
     } 
+
+	
 });
