@@ -38,7 +38,10 @@ public class GlobalConstants
    public static final String LOAD_SCHEDULERINFO = "get_scheduler_info";
    public static final String LOAD_TRIGGERS_FOR_JOB = "get_job_triggers";
    public static final String MONITOR_JOBS = "monitor_jobs";
-
+   public static final String START_SCHEDULER="startScheduler";
+   public static final String STOP_SCHEDULER="stopScheduler";
+   
+   
    public static final String MESSAGE_FAILED_CONNECT = "Connection Failed";
    public static final String MESSAGE_ERR_CHECK_LOG = "Error processing request! Check log for details.";
    public static final String MESSAGE_ERR_LOAD_JOBS = "Error Loading Jobs! Check log for details.";
@@ -48,4 +51,7 @@ public class GlobalConstants
    public static final String MESSAGE_ERR_LOAD_SCHEDULER = "Error loading Scheduler!";
    public static final String MESSAGE_ERR_LOAD_TRIGGERS = "Error loading Triggers for Job";
    public static final String MESSAGE_ERR_TAIL_JOBS = "Error monitoring jobs list.";
+   
+   
+   public static final String LOGOUT="logout";
 }

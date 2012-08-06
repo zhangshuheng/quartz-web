@@ -51,7 +51,10 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="QrtzUserImp" class="com.quartz.web.dao.impl.QrtzUserImp">
+	<bean id="QrtzUsersDAOImpl" class="com.quartz.web.dao.QrtzUsersDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	<bean id="QrtzJobDetailsDAOImpl" class="com.quartz.web.dao.QrtzJobDetailsDAOImpl">
 		<property name="sqlMapClient" ref="sqlMapClient"/>
 	</bean>
 

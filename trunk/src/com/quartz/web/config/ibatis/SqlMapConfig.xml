@@ -1,5 +1,8 @@
 <!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
-	<sqlMap resource="com/quartz/web/pojo/QrtzUser.xml"/>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true" useStatementNamespaces="true" />
+	<sqlMap resource="com/quartz/web/config/ibatis/sqlmap/qrtz_users_SqlMap.xml"/>
+	<sqlMap resource="com/quartz/web/config/ibatis/sqlmap/qrtz_job_details_SqlMap.xml"/>
+	
 </sqlMapConfig>
 
