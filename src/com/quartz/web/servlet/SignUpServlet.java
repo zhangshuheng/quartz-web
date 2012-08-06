@@ -12,12 +12,13 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.quartz.web.dao.IQrtzUser;
-import com.quartz.web.pojo.QrtzUser;
+import com.quartz.web.dao.QrtzUsersDAO;
+import com.quartz.web.pojo.QrtzUsers;
+import com.quartz.web.pojo.QrtzUsersExample;
 
 public class SignUpServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SignUpServlet.class);
-	private IQrtzUser qrtzUserDao;
+	private QrtzUsersDAO qrtzUserDao;
 	/**
 	 * The doGet method of the servlet. <br>
 	 *
@@ -51,7 +52,7 @@ public class SignUpServlet extends HttpServlet {
 
 		response.setContentType("application/json;charset=UTF-8"); 
 		response.setCharacterEncoding("UTF-8");
-		String userName =request.getParameter("userName").toString();
+		String userName =request.getParameter("username").toString();
 		String password = request.getParameter("password").toString();
 		log.debug("页面参数：userName:"+userName+"\tpassword:"+password);
 		String msg = "";
@@ -60,17 +61,22 @@ public class SignUpServlet extends HttpServlet {
 			msg = "{success:false,errors:{info:'用户名密码不能为空'}}";
 		}else{
 			ApplicationContext context  = new ClassPathXmlApplicationContext("com/quartz/web/config/spring/applicationContext.xml");
-			qrtzUserDao = (IQrtzUser)context.getBean("QrtzUserImp");
-			
-			QrtzUser user = qrtzUserDao.queryByName(userName);
+			qrtzUserDao = (QrtzUsersDAO)context.getBean("QrtzUsersDAOImpl");
+			QrtzUsersExample example = new QrtzUsersExample();
+			example.createCriteria().andUserNameEqualTo(userName);
+			QrtzUsers user = qrtzUserDao.selectByExample(example).get(0);
 			log.debug("password.trim()="+password.trim());
-			log.debug("user.getQrtzUserPassword().trim()="+user.getQrtzUserPassword().trim());
-			log.debug("password.trim()==user.getQrtzUserPassword().trim()="+password.trim()==user.getQrtzUserPassword().trim());
+			log.debug("user.getQrtzUserPassword().trim()="+user.getUserPassword());
 			if(null == user){
 				msg = "{success:false,errors:{info:'用户不存在!'}}";
-			}else if(password.trim()==user.getQrtzUserPassword().trim()) {
+			}else if(password.trim().equals(user.getUserPassword().trim())) {
 				msg = "{success:true,msg:{}}";
 				request.setAttribute("user", user);
+				request.getSession().setAttribute("user", user);
+				this.getServletConfig().getServletContext().setAttribute("springContext", context);
+//				request.getRequestDispatcher("main.jsp").forward(request, response);
+				log.debug("user:--->"+user);
+				
 			}else{
 				msg = "{success:false,errors:{info:'用户密码不正确!'}}";
 			}
@@ -78,6 +84,7 @@ public class SignUpServlet extends HttpServlet {
 		out.println(msg);
 		out.flush();
 		out.close();
+		
 	}
 
 }

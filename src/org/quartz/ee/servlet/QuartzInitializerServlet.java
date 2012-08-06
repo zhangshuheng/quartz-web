@@ -136,7 +136,7 @@ public class QuartzInitializerServlet extends HttpServlet {
     public void init(ServletConfig cfg) throws javax.servlet.ServletException {
         super.init(cfg);
 
-        log("Quartz 初始化Servlet加载完成, 初始化调度器...");
+        log("Quartz Servlet加载完成, 初始化调度器...");
 
         StdSchedulerFactory factory;
         try {
@@ -191,7 +191,7 @@ public class QuartzInitializerServlet extends HttpServlet {
                     log("调度器将在 " + startDelay + " 秒后启动.");
                 }
             } else {
-                log("调度器未启动. 手动启动scheduler.start()");
+                log("调度器未启动. 需手动触发");
             }
 
             String factoryKey = cfg.getInitParameter("servlet-context-factory-key");
