@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+
+<abatorConfiguration >
+<!-- defaultModelType="conditional"表示每个table生成一组代码文件 defaultModelType="flat" 表示所有table共生成一组代码文件-->
+  <!-- abatorContext的一个属性generatorSet有3个选项Legacy、Java2、Java5，一般用Java5
+  	Legacy：如果没有generatorSet属性的话，默认是Legacy。
+  	但并不推荐使用Legacy因为它在生成Example类（用于查询条件）的时候有很多限制，
+  	他将查询条件写在sqlMap配置文件中，将查询值写在Example中，这样就对修改产生一些困难。
+ 
+    Java2和Java5：他们只支持iBATIS 2.20以上的版本。
+    在以这个模式成生的Example文件中包含了查询条件和查询值。
+    这样修改就方便多了，对于用join的select时的查询就更方 便了
+    ，自己可以定义查询条件，自由度高了很多（对于join的and查询可能还得自己修改一下Example代码）。
+    对于or和and的应用Legacy 的限制就比较大了。
+   -->
+  <abatorContext id="QuartzWeb" generatorSet="Java5">
+  	<!-- TODO: Add Database Connection Information -->
+      <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+          connectionURL="jdbc:oracle:thin:@host:1521:quartz_web"
+          userId="userId"
+          password="password">
+        <classPathEntry location="" />
+      </jdbcConnection>-->
+      <!--<jdbcConnection driverClass="com.microsoft.jdbc.sqlserver.SQLServerDriver"
+          connectionURL="jdbc:microsoft:sqlserver://host:1433;databaseName=quartz_web"
+          userId="userId"
+          password="password">
+        <classPathEntry location="../lib/sqljdbc.jar" />
+      </jdbcConnection>-->
+      <!--<jdbcConnection driverClass="Com.ibm.db2.jdbc.net.DB2Driver"
+          connectionURL="jdbc:db2://host:50000/quartz_web"
+          userId="userId"
+          password="password">
+        <classPathEntry location="../lib/db2java.jar" />
+      </jdbcConnection>-->
+      <!--<jdbcConnection driverClass="sun.jdbc.odbc.JdbcOdbcDriver"
+          connectionURL="jdbc:odbc:quartz_web"
+          userId="userId"
+          password="password">
+        <classPathEntry location="../lib/rt.jar" />
+      </jdbcConnection>-->
+      <!--<jdbcConnection driverClass="org.postgresql.Driver"
+          connectionURL="jdbc:postgresql://host/quartz_web"
+          userId="userId"
+          password="password">
+        <classPathEntry location="../lib/pgjdbc2.jar" />
+      </jdbcConnection>-->
+      <!--<jdbcConnection driverClass="sun.jdbc.odbc.JdbcOdbcDriver"
+          connectionURL="jdbc:odbc:driver={Microsoft Access Driver (*.mdb)};DBQ=F:\\data.mdb"
+          userId="userId"
+          password="password">
+        <classPathEntry location="../lib/rt.jar" />
+      </jdbcConnection>-->
+    <!--<property name="suppressTypeWarnings" value="false"/>-->
+     
+	<!-- 对于数据库中DECIMAL or NUMERIC类型字段是否强制使用java.math.BigDecimal表示   -->
+	<javaTypeResolver type="DEFAULT">
+	   <property name="forceBigDecimals" value="false"/>
+	</javaTypeResolver>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/quartz_web?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false" userId="root" password="root" >
+      <classPathEntry location="E:/WORKSPACES/SEFC/quartz-web/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.4-bin.jar" /><!-- 设置mysql驱动路径 -->
+    </jdbcConnection>
+    <!-- 
+	ibatorPlugin 继承自IbatorPluginAdapter，包名必须是 org.apache.ibatis.ibator.plugins，具体实现可以参考官方文档 
+	必须有替换和被替换字符属性。 
+	--> 
+    <ibatorPlugin type="org.apache.ibatis.ibator.plugins.RenameExampleClassPlugin"> 
+		<property value="Example$" /> 
+		<property value="Criteria" /> 
+	</ibatorPlugin> 
+
+
+    <javaModelGenerator targetPackage="com.quartz.web.pojo" targetProject="quartz-web" >
+    <!-- 
+          targetProject        生成的Java Bean放置在哪个项目的哪个目录下 
+          targetPackage        生成的Java Bean的包名 
+                 一个有用的属性  -->
+          <property name="trimStrings" value="true" /> 
+          <!--  从数据库返回的值被清理前后的空格  -->
+          <property name="enableSubPackages" value="false" /> 
+          <!-- 是否在包名后加上scheme名称 --> 
+    </javaModelGenerator>
+        
+    <sqlMapGenerator targetPackage="com.quartz.web.config.ibatis.sqlmap" targetProject="quartz-web">
+    	<!-- 
+          targetProject        生成的 SqlMap.xml 文件放置在哪个项目的哪个目录下 
+          targetPackage        生成的 SqlMap.xml 文件的包名 
+        --> 
+        <property name="enableSubPackages" value="false" /> <!-- 是否在包名后加上scheme名称  -->
+    </sqlMapGenerator>
+    <daoGenerator targetPackage="com.quartz.web.dao" targetProject="quartz-web" type="SPRING">
+    	<!-- 
+          targetProject        生成的 dao类文件放置在哪个项目的哪个目录下 
+          targetPackage        生成的 dao类文件的包名 
+          
+          type        生成dao文件的类型，可选择IBATIS、SPRING、GENERIC-CI、GENERIC-SI。
+          			     默认使用GENERIC-CI 
+                      dao类在构造器中获取 SqlMapClient。 
+                   
+        --> 
+        <!-- 是否在包名后加上scheme名称  -->
+        <property name="enableSubPackages" value="false" /> 
+    </daoGenerator>
+    
+    <table tableName="qrtz_users"/>
+    <table tableName="qrtz_blob_triggers"/>
+    <table tableName="qrtz_calendars"/>
+    <table tableName="qrtz_cron_triggers"/>
+    <table tableName="qrtz_fired_triggers"/>
+    <table tableName="qrtz_job_details"/>
+    <table tableName="qrtz_job_listeners"/>
+    <table tableName="qrtz_locks"/>
+    <table tableName="qrtz_paused_trigger_grps"/>
+    <table tableName="qrtz_scheduler_state"/>
+    <table tableName="qrtz_simple_triggers"/>
+    <table tableName="qrtz_triggers"/>
+    <table tableName="qrtz_trigger_listeners"/>
+  </abatorContext>
+</abatorConfiguration>

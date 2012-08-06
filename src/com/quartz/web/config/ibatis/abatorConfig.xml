@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration >
+  <abatorContext id="QuartzWeb" generatorSet="Java5">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/quartz_web?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false" userId="root" password="root" >
+      <classPathEntry location="E:/WORKSPACES/SEFC/quartz-web/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.4-bin.jar" />
+    </jdbcConnection>
+	<javaTypeResolver type="DEFAULT">
+	  <property name="forceBigDecimals" value="false"/>
+	</javaTypeResolver>
+    <javaModelGenerator targetPackage="com.quartz.web.pojo" targetProject="quartz-web" >
+      <property name="trimStrings" value="true" /> 
+      <property name="enableSubPackages" value="false" /> 
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="com.quartz.web.config.ibatis.sqlmap" targetProject="quartz-web">
+       <property name="enableSubPackages" value="false" /> 
+    </sqlMapGenerator>
+    <daoGenerator targetPackage="com.quartz.web.dao" targetProject="quartz-web" type="SPRING">
+       <property name="enableSubPackages" value="false" /> 
+    </daoGenerator>
+    <table tableName="qrtz_job_details"/>
+    <table tableName="qrtz_users"/>
+  </abatorContext>
+</abatorConfiguration>
