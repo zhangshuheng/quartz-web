@@ -29,7 +29,10 @@ Ext.onReady(function() {
 			})
 		},// 添加菜单项
 		{
-			text : '公司信息'
+			id : '_org_id_',
+			text : '组织机构信息',
+			handler : getOrgItem
+			
 		}
 		]
 	});
@@ -40,6 +43,15 @@ Ext.onReady(function() {
 		  items : [{
 			  text : '系统设置页面',
 		      handler : onMenuItem
+		  },'-',{
+			  text : '启动调度器',
+		      handler : startScheduler
+		  },{
+			  text : '关闭调度器',
+		      handler : stopScheduler
+		  },'-',{
+			  text : '退出系统',
+			  handler : logout
 		  }]
 	});
 	//导航菜单
@@ -58,6 +70,9 @@ Ext.onReady(function() {
 		},{
 			text : '添加面板',
 			handler : addTabPage
+		},{
+			text : 'JOB',
+			handler : getJobDetails
 		}]
 	});
 	
@@ -69,6 +84,62 @@ Ext.onReady(function() {
 	function onMenuItem(item) {// 选择菜单项的处理函数
 		Ext.Msg.alert("提示","您点击了:\t<font style='font: bold;' >"+item.text+"</font>");// 取得菜单项的text属性
 	}
+	/**
+	 * 获取组织信息
+	 */
+	var orgWin;
+	function getOrgItem(){
+		if (!orgWin) {
+			orgWin = Ext.create('widget.window', {
+				title : '组织机构',
+				autoDestroy : true,
+				closable : true,
+				maximizable: true,
+				closeAction : 'close',
+				width : 800,
+				minWidth : 350,
+				height : 500,
+				layout : {
+					type : 'border',
+					padding : 5
+				},
+				items : [ {
+					region : 'west',
+					title : '组织机构树',
+					width : 200,
+					split : true,
+					collapsible : true,
+					floatable : false
+				}, {
+					region : 'center',
+					xtype : 'tabpanel',
+					draggable : true,
+					items : [ {
+						title : '组织机构详细01',
+						html : '组织机构详细01'
+					}, {
+						title : '组织机构详细02',
+						html : '组织机构详细02'
+					}, {
+						title : '组织机构详细03',
+						html : '组织机构详细03',
+						closable : true
+					} ]
+				} ]
+			});
+		}
+		//button.dom.disabled = true;
+		if (orgWin.isVisible()) {
+			orgWin.hide(this, function() {
+				//button.dom.disabled = false;
+			});
+		} else {
+			orgWin.show(this, function() {
+				//button.dom.disabled = false;
+			});
+		}
+
+	}
 	function addTabPage(){  
 		var tabPanel = Ext.getCmp('mainTabPanel');
         var index = tabPanel.items.length + 1;  
@@ -79,6 +150,4 @@ Ext.onReady(function() {
         })  
         tabPanel.setActiveTab(tabPage);//设置当前tab页  
     } 
-
-	
 });
