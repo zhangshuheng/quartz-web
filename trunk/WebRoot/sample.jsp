@@ -11,12 +11,12 @@
     <meta http-equiv="description" content="This is my page">  
     
        
-	<link rel="stylesheet" href="extjs/resources/css/ext-all.css" type="text/css"></link>
-  	<link rel="stylesheet" href="extjs/examples/shared/example.css" type="text/css"></link>
+	<link rel="stylesheet" href="extjs-4.1/resources/css/ext-all.css" type="text/css"></link>
+  	<link rel="stylesheet" href="extjs-4.1/examples/shared/example.css" type="text/css"></link>
   	
-	<script type="text/javascript" src="extjs/ext-all.js"></script>
-	<script type="text/javascript" src="extjs/examples/shared/examples.js"></script>
-    <script type="text/javascript" src="extjs/locale/ext-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="extjs-4.1/ext-all.js"></script>
+	<script type="text/javascript" src="extjs-4.1/examples/shared/examples.js"></script>
+    <script type="text/javascript" src="extjs-4.1/locale/ext-lang-zh_CN.js"></script>
     <script type="text/javascript">  
     Ext.onReady(function(){    
     	Ext.define("Everts",{

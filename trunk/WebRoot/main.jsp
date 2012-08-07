@@ -18,8 +18,8 @@
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
-		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-		<meta http-equiv="description" content="This is my page">
+		<meta http-equiv="keywords" content="基于quartz1.6.5任务调度管理web应用">
+		<meta http-equiv="description" content="基于quartz1.6.5任务调度管理web应用">
 		<style type="text/css">
 p {
 	margin: 5px;
@@ -41,10 +41,21 @@ p {
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 		<link rel="stylesheet" type="text/css" href="extjs-4.1/resources/css/ext-all.css" />
+		
+		<!--  -->
+		<link rel="stylesheet" type="text/css" href="css/calendar/calendar.css">
+		<link rel="stylesheet" type="text/css" href="css/calendar/examples.css">
+		<!--  -->
+		
 		<script type="text/javascript" src="extjs-4.1/bootstrap.js"></script>
 		<script type="text/javascript" src="js/commons.js"></script>
 		<script type="text/javascript" src="js/job_details.js"></script>
 		<script type="text/javascript" src="js/scheduler.js"></script>
+		
+		<!--  -->
+		<!--  -->
+		
+		
 		<script type="text/javascript" src="js/menu.js"></script>
 		<script type="text/javascript" src="js/demo.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>

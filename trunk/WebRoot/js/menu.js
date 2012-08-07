@@ -3,8 +3,7 @@ Ext.onReady(function() {
 	var Toolbar = new Ext.toolbar.Toolbar({// 创建工具栏
 		renderTo : 'toolbar',
 		width : 300,
-		height:25,
-		right:25
+		height : 27
 	});
 	//信息菜单
 	var infoMenu = Ext.create("Ext.menu.Menu",{// 一级菜单
@@ -41,8 +40,8 @@ Ext.onReady(function() {
 		ignoreParentClicks : true,
 		plain : true,
 		  items : [{
-			  text : '系统设置页面',
-		      handler : onMenuItem
+			  text : '日程管理',
+		      handler : onMenuItem//getCalendar
 		  },'-',{
 			  text : '启动调度器',
 		      handler : startScheduler
@@ -95,6 +94,7 @@ Ext.onReady(function() {
 				autoDestroy : true,
 				closable : true,
 				maximizable: true,
+				minimizable: true,
 				closeAction : 'close',
 				width : 800,
 				minWidth : 350,
@@ -140,7 +140,7 @@ Ext.onReady(function() {
 		}
 
 	}
-	function addTabPage(){  
+	function addTabPage(cmpId){  
 		var tabPanel = Ext.getCmp('mainTabPanel');
         var index = tabPanel.items.length + 1;  
         var tabPage = tabPanel.add({//动态添加tab页  
