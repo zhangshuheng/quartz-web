@@ -73,8 +73,10 @@ public class SignUpServlet extends HttpServlet {
 				msg = "{success:true,msg:{}}";
 				request.setAttribute("user", user);
 				request.getSession().setAttribute("user", user);
+				request.getSession().setAttribute("username", user.getUserName());
 				this.getServletConfig().getServletContext().setAttribute("springContext", context);
-//				request.getRequestDispatcher("main.jsp").forward(request, response);
+//				request.getRequestDispatcher("desktop.jsp").forward(request, response);
+				
 				log.debug("user:--->"+user);
 				
 			}else{

@@ -99,7 +99,7 @@ public class JSONUtil {
     }
 
     /**
-     * ä½¿ç”¨åå°„æ ¹æ®å±æ€§åç§°è·å–å±æ€§å€¼ 
+     * Ê¹ÓÃ·´Éä¸ù¾İÊôĞÔÃû³Æ»ñÈ¡ÊôĞÔÖµ 
      * @param fieldName
      * @param o
      * @return
@@ -112,13 +112,13 @@ public class JSONUtil {
             Object value = method.invoke(o, new Object[] {});  
             return value;  
         } catch (Exception e) {  
-            System.out.println("å±æ€§ä¸å­˜åœ¨");  
+            System.out.println("ÊôĞÔ²»´æÔÚ");  
             return null;  
         }  
     }                                      
 
     /**
-     * 2. è·å–å¯¹è±¡å±æ€§ï¼Œè¿”å›ä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„   
+     * 2. »ñÈ¡¶ÔÏóÊôĞÔ£¬·µ»ØÒ»¸ö×Ö·û´®Êı×é   
      * @param o
      * @return
      */
@@ -132,7 +132,7 @@ public class JSONUtil {
     }  
  
     /**
-     * 3. é€šè¿‡ä¸Šé¢ä¸¤ä¸ªæ­¥éª¤ï¼Œå³å¯å°†ä¸€ä¸ªå¯¹è±¡è½¬åŒ–ä¸ºä¸€ä¸ªæ•°ç»„            
+     * 3. Í¨¹ıÉÏÃæÁ½¸ö²½Öè£¬¼´¿É½«Ò»¸ö¶ÔÏó×ª»¯ÎªÒ»¸öÊı×é            
      * @param o
      * @return
      */
@@ -148,7 +148,7 @@ public class JSONUtil {
   
 
 	/**
-	* ä»jsonä¸²è½¬æ¢æˆå®ä½“å¯¹è±¡
+	* ´Ójson´®×ª»»³ÉÊµÌå¶ÔÏó
 	* @param jsonObjStr e.g. {'name':'get','dateAttr':'2009-11-12'}
 	* @param clazz Person.class
 	* @return
@@ -158,7 +158,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* ä»jsonä¸²è½¬æ¢æˆå®ä½“å¯¹è±¡ï¼Œå¹¶ä¸”å®ä½“é›†åˆå±æ€§å­˜æœ‰å¦å¤–å®ä½“Bean
+	* ´Ójson´®×ª»»³ÉÊµÌå¶ÔÏó£¬²¢ÇÒÊµÌå¼¯ºÏÊôĞÔ´æÓĞÁíÍâÊµÌåBean
 	* @param jsonObjStr e.g. {'data':[{'name':'get'},{'name':'set'}]}
 	* @param clazz e.g. MyBean.class
 	* @param classMap e.g. classMap.put("data", Person.class)
@@ -169,7 +169,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆæ™®é€šæ•°ç»„
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³ÉÆÕÍ¨Êı×é
 	* @param jsonArrStr  e.g. ['get',1,true,null]
 	* @return Object[]
 	*/
@@ -178,7 +178,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆå®ä½“æ•°ç»„
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³ÉÊµÌåÊı×é
 	* @param jsonArrStr e.g. [{'name':'get'},{'name':'set'}]
 	* @param clazz e.g. Person.class
 	* @return Object[]
@@ -193,7 +193,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆå®ä½“æ•°ç»„ï¼Œä¸”æ•°ç»„å…ƒç´ çš„å±æ€§å«æœ‰å¦å¤–å®ä¾‹Bean
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³ÉÊµÌåÊı×é£¬ÇÒÊı×éÔªËØµÄÊôĞÔº¬ÓĞÁíÍâÊµÀıBean
 	* @param jsonArrStr e.g. [{'data':[{'name':'get'}]},{'data':[{'name':'set'}]}]
 	* @param clazz e.g. MyBean.class
 	* @param classMap e.g. classMap.put("data", Person.class)
@@ -211,7 +211,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆå­˜æ”¾æ™®é€šç±»å‹å…ƒç´ çš„é›†åˆ
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³É´æ·ÅÆÕÍ¨ÀàĞÍÔªËØµÄ¼¯ºÏ
 	* @param jsonArrStr  e.g. ['get',1,true,null]
 	* @return List
 	*/
@@ -225,7 +225,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆé›†åˆï¼Œä¸”é›†åˆé‡Œå­˜æ”¾çš„ä¸ºå®ä¾‹Bean
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³É¼¯ºÏ£¬ÇÒ¼¯ºÏÀï´æ·ÅµÄÎªÊµÀıBean
 	* @param jsonArrStr e.g. [{'name':'get'},{'name':'set'}]
 	* @param clazz
 	* @return List
@@ -240,7 +240,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠä¸€ä¸ªjsonæ•°ç»„ä¸²è½¬æ¢æˆé›†åˆï¼Œä¸”é›†åˆé‡Œçš„å¯¹è±¡çš„å±æ€§å«æœ‰å¦å¤–å®ä¾‹Bean
+	* °ÑÒ»¸öjsonÊı×é´®×ª»»³É¼¯ºÏ£¬ÇÒ¼¯ºÏÀïµÄ¶ÔÏóµÄÊôĞÔº¬ÓĞÁíÍâÊµÀıBean
 	* @param jsonArrStr e.g. [{'data':[{'name':'get'}]},{'data':[{'name':'set'}]}]
 	* @param clazz e.g. MyBean.class
 	* @param classMap e.g. classMap.put("data", Person.class)
@@ -256,7 +256,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠjsonå¯¹è±¡ä¸²è½¬æ¢æˆmapå¯¹è±¡
+	* °Ñjson¶ÔÏó´®×ª»»³Émap¶ÔÏó
 	* @param jsonObjStr e.g. {'name':'get','int':1,'double',1.1,'null':null}
 	* @return Map
 	*/
@@ -272,7 +272,7 @@ public class JSONUtil {
 	}
 
 	/**
-	* æŠŠjsonå¯¹è±¡ä¸²è½¬æ¢æˆmapå¯¹è±¡ï¼Œä¸”mapå¯¹è±¡é‡Œå­˜æ”¾çš„ä¸ºå…¶ä»–å®ä½“Bean
+	* °Ñjson¶ÔÏó´®×ª»»³Émap¶ÔÏó£¬ÇÒmap¶ÔÏóÀï´æ·ÅµÄÎªÆäËûÊµÌåBean
 	* @param jsonObjStr e.g. {'data1':{'name':'get'},'data2':{'name':'set'}}
 	* @param clazz e.g. Person.class
 	* @return Map
@@ -289,7 +289,7 @@ public class JSONUtil {
 	}
 
 	/**
-	 * æŠŠjsonå¯¹è±¡ä¸²è½¬æ¢æˆmapå¯¹è±¡ï¼Œä¸”mapå¯¹è±¡é‡Œå­˜æ”¾çš„å…¶ä»–å®ä½“Beanè¿˜å«æœ‰å¦å¤–å®ä½“Bean
+	 * °Ñjson¶ÔÏó´®×ª»»³Émap¶ÔÏó£¬ÇÒmap¶ÔÏóÀï´æ·ÅµÄÆäËûÊµÌåBean»¹º¬ÓĞÁíÍâÊµÌåBean
 	 * @param jsonObjStr e.g. {'mybean':{'data':[{'name':'get'}]}}
 	 * @param clazz e.g. MyBean.class
 	 * @param classMap	e.g. classMap.put("data", Person.class)
@@ -308,17 +308,17 @@ public class JSONUtil {
 	}
 
 	/**
-	 * æŠŠå®ä½“Beanã€Mapå¯¹è±¡ã€æ•°ç»„ã€åˆ—è¡¨é›†åˆè½¬æ¢æˆJsonä¸²
+	 * °ÑÊµÌåBean¡¢Map¶ÔÏó¡¢Êı×é¡¢ÁĞ±í¼¯ºÏ×ª»»³ÉJson´®
 	 * @param obj 
 	 * @return
 	 * @throws Exception String
 	 */
 //	public static String getJsonStr(Object obj) {
 //		String jsonStr = null;
-//		//Jsoné…ç½®    
+//		//JsonÅäÖÃ    
 //		JsonConfig jsonCfg = new JsonConfig();
 //
-//		//æ³¨å†Œæ—¥æœŸå¤„ç†å™¨
+//		//×¢²áÈÕÆÚ´¦ÀíÆ÷
 //		jsonCfg.registerJsonValueProcessor(java.util.Date.class,
 //				new JsonDateValueProcessor(Util.YYYY_MM_DD_HH_MM_ss));
 //		if (obj == null) {
@@ -335,10 +335,10 @@ public class JSONUtil {
 //	}
 //
 //	/**
-//	 * æŠŠjsonä¸²ã€æ•°ç»„ã€é›†åˆ(collection map)ã€å®ä½“Beanè½¬æ¢æˆXML
-//	 * XMLSerializer APIï¼š
+//	 * °Ñjson´®¡¢Êı×é¡¢¼¯ºÏ(collection map)¡¢ÊµÌåBean×ª»»³ÉXML
+//	 * XMLSerializer API£º
 //	 * http://json-lib.sourceforge.net/apidocs/net/sf/json/xml/XMLSerializer.html
-//	 * å…·ä½“å®ä¾‹è¯·å‚è€ƒï¼š
+//	 * ¾ßÌåÊµÀıÇë²Î¿¼£º
 //	 * http://json-lib.sourceforge.net/xref-test/net/sf/json/xml/TestXMLSerializer_writes.html
 //	 * http://json-lib.sourceforge.net/xref-test/net/sf/json/xml/TestXMLSerializer_writes.html
 //	 * @param obj 
@@ -348,10 +348,10 @@ public class JSONUtil {
 //	public static String getXMLFromObj(Object obj) {
 //		XMLSerializer xmlSerial = new XMLSerializer();
 //
-//		//Jsoné…ç½®    
+//		//JsonÅäÖÃ    
 //		JsonConfig jsonCfg = new JsonConfig();
 //
-//		//æ³¨å†Œæ—¥æœŸå¤„ç†å™¨
+//		//×¢²áÈÕÆÚ´¦ÀíÆ÷
 //		jsonCfg.registerJsonValueProcessor(java.util.Date.class,
 //				new JsonDateValueProcessor(Util.YYYY_MM_DD_HH_MM_ss));
 //
@@ -366,7 +366,7 @@ public class JSONUtil {
 //	}
 
 	/**
-	 * ä»XMLè½¬jsonä¸²
+	 * ´ÓXML×ªjson´®
 	 * @param xml
 	 * @return String
 	 */
